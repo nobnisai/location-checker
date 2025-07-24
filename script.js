@@ -78,3 +78,11 @@ function handleLookup() {
     });
   }
   
+
+  document.getElementById('locationInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // prevent form submission if inside a form
+      handleLookup();
+    }
+  });
+  
