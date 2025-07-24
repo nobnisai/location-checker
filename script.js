@@ -29,7 +29,22 @@ function handleLookup() {
         lng: toDecimal(dmsMatches[1])
       };
     }
-  
+
+    // Match Plus Code (full or local)
+    const plusCodeRegex = /([23456789CFGHJMPQRVWX]{4,8}\+[23456789CFGHJMPQRVWX]{2,3})(?:\s+(.+))?/i;
+    const plusCodeMatch = input.match(plusCodeRegex);
+    if (plusCodeMatch) {
+      const plusCode = plusCodeMatch[1];
+      console.log(plusCode);
+      if (OpenLocationCode.isFull(plusCode)) {
+        // Full Plus Code: decode directly
+        const decoded = OpenLocationCode.decode(plusCode);
+        return { lat: decoded.latitudeCenter, lng: decoded.longitudeCenter };
+      } else {
+        alert("⚠️ Local Plus Codes need a reference location (e.g., city name).");
+      }
+    }
+    
     // Match Google Maps shortened URL
     const mapsLink = input.match(/https:\/\/maps\.app\.goo\.gl\/[^\s]+/);
     if (mapsLink) {

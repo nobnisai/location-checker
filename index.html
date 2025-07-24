@@ -9,10 +9,11 @@
 <body>
   <div class="container">
     <h1>📍 Location Checker</h1>
-    <input type="text" id="locationInput" placeholder="Paste coordinates, DMS, or Google Maps link..." />
+    <input type="text" id="locationInput" placeholder="Paste coordinates, DMS, Plus Code or Google Maps link..." />
     <button onclick="handleLookup()">Check</button>
     <div id="result"></div>
   </div>
+  <script src="https://unpkg.com/open-location-code@1.0.4/openlocationcode.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
